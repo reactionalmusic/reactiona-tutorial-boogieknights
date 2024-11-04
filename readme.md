@@ -1,4 +1,4 @@
-# Reactional Tutorial - Music Puzzler
+# Reactional Tutorial - MusicCrypt, a.k.a. BOO-GIE KNIGHTS
 
 ![Alt text](MusicCrypt.png?raw=true "Title")
 
