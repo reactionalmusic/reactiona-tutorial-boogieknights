@@ -2,7 +2,7 @@
 
 ![Alt text](MusicCrypt.png?raw=true "Title")
 
-This project serves as a showcase and tutorial on how to easily retrofit musical gameplay into an existing game. When making this project, more time was spent tweaking colors than making it musical.
+This project serves as a showcase and tutorial on how to easily create a compelling rhythm arcade game, where all actions take place on the beat.
 
 [Watch video](https://youtu.be/vlPF6UoaDwo)
 
