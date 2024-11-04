@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class Knight : MonoBehaviour
 {
-    public float moveInterval = 0.5f;    // Time between each movement
-    public Vector3Int gridPosition;     // Position on the grid
-    private float nextBeat = 1f;
+
+    [HideInInspector]
+    public Vector3Int gridPosition; // Position on the grid
+
+    [Header("Weapon Settings")]
     public GameObject equippedWeapon;
     public List<GameObject> weapons;
     public GameObject weaponHolder;
     private Quaternion swordStartRotation;
-    bool isAttacking = false;
+    private bool isAttacking = false;
 
+    [Header("Audio Settings")]
     public List<AudioClip> swordSounds;
     public List<AudioClip> hitSounds;
     public List<AudioClip> walkSounds;
-    AudioSource audioSource;
-    public Vector2 boxSize = new Vector2(1f, 1f);
-    public int health = 4;
-    bool invoulnerable = false;
-    bool isDead = false;
+    private AudioSource audioSource;
 
+    [Header("Health Settings")]
+    public int health = 4;
+    private bool invulnerable = false;
+    private bool isDead = false;
+
+    [Header("Game Settings")]
+    public GameObject gameOverScreen;
+    [HideInInspector]
     public bool blockInput = false;
 
-    public GameObject gameOverScreen;
+    private float nextBeat = 1f;
+
     private void Start()
     {
         // Initialize the knight's position on the grid (rounding to grid)
@@ -44,11 +52,12 @@ public class Knight : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space)) // Swing sword
         {
-            if (isDead){
+            if (isDead)
+            {
                 // Restart the game
                 UnityEngine.SceneManagement.SceneManager.LoadScene(0);
             }
-                
+
             StartCoroutine(SwingSword());
         }
 
@@ -91,7 +100,7 @@ public class Knight : MonoBehaviour
             // If there's a valid input direction, move the knight
             if (direction != Vector3Int.zero)
             {
-                MoveKnight(direction);                
+                MoveKnight(direction);
             }
         }
     }
@@ -113,26 +122,22 @@ public class Knight : MonoBehaviour
     }
     void MoveKnight(Vector3Int direction)
     {
-        
+        // Calculate the new grid position
+        Vector3Int newGridPosition = gridPosition + direction;
+        // Define the size of the box for collision detection
+        Vector2 boxSize = new Vector2(0.8f, 0.8f); // Adjust size as needed to match the grid size
 
-        // Move the knight's transform to the new position
-        //transform.position = gridPosition;
-    Vector3Int newGridPosition = gridPosition + direction;
-            // Define the size of the box for collision detection
-    Vector2 boxSize = new Vector2(0.8f, 0.8f); // Adjust size as needed to match the grid size
+        // Check if the new position collides with any colliders on the "Wall" layer
+        Vector3 boxCenter = new Vector3(newGridPosition.x + 0.5f, newGridPosition.y - 0.5f, 0f);
 
-    // Check if the new position collides with any colliders on the "Wall" layer
-    Vector3 boxCenter = new Vector3(newGridPosition.x + 0.5f, newGridPosition.y - 0.5f, 0f);
-
-    if (Physics2D.OverlapBox(boxCenter, boxSize, 0f, LayerMask.GetMask("Wall")))
-    {
-        Debug.Log($"Collision detected at grid position: {newGridPosition}");
-        return;
-    }
+        if (Physics2D.OverlapBox(boxCenter, boxSize, 0f, LayerMask.GetMask("Wall")))
+        {
+            return;
+        }
         // Update the knight's grid position
         gridPosition = newGridPosition;
         StartCoroutine(SmoothMove(gridPosition));
-        Reactional.Playback.Theme.TriggerStinger("small", 0.125f);
+        Reactional.Playback.Theme.TriggerStinger(StingerMapping.MoveStinger, 0.125f);
         audioSource.clip = walkSounds[Random.Range(0, walkSounds.Count)];
         Reactional.Playback.MusicSystem.ScheduleAudio(audioSource, 1f);
 
@@ -181,7 +186,7 @@ public class Knight : MonoBehaviour
     void CheckAttack()
     {
         // Check if the sword is colliding with an enemy
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(equippedWeapon.transform.position, 1f);        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(equippedWeapon.transform.position, 1f);
         foreach (Collider2D enemy in hitEnemies)
         {
             if (enemy != null && enemy.CompareTag("Enemy"))
@@ -193,26 +198,26 @@ public class Knight : MonoBehaviour
 
     public void TakeDamage()
     {
-        if (invoulnerable)
+        if (invulnerable)
             return;
         StartCoroutine(TakeDamageCoroutine());
     }
     public IEnumerator TakeDamageCoroutine()
     {
-        invoulnerable = true;
+        invulnerable = true;
         health--;
         GetComponent<Healthbar>().UpdateHealth(health);
         if (health <= 0)
         {
             // Game over
             Debug.Log("Game Over");
-            Reactional.Playback.Theme.TriggerStinger("big", 0.125f);
+            Reactional.Playback.Theme.TriggerStinger(StingerMapping.DamageStinger, 0.125f);
             StartCoroutine(GameOver());
             yield break;
         }
         audioSource.clip = hitSounds[Random.Range(0, hitSounds.Count)];
         Reactional.Playback.MusicSystem.ScheduleAudio(audioSource, 0.5f);
-        Reactional.Playback.Theme.TriggerStinger("big", 0.125f);
+        Reactional.Playback.Theme.TriggerStinger(StingerMapping.DamageStinger, 0.125f);
         // Flash the knight red
         int repeats = 4;
         float t = 0f;
@@ -225,7 +230,7 @@ public class Knight : MonoBehaviour
             t += 1;
         }
         GetComponent<SpriteRenderer>().color = Color.white;
-        invoulnerable = false;
+        invulnerable = false;
     }
 
     IEnumerator GameOver()
@@ -241,9 +246,10 @@ public class Knight : MonoBehaviour
             gameOverScreen.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, t / duration);
             yield return null;
         }
+
+        blockInput = true;
         yield return new WaitForSeconds(4f);
         isDead = true;
-        blockInput = true;
     }
 
 

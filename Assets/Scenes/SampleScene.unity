@@ -169,23 +169,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f899e76430c9a480caa60e16475c0034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveInterval: 0.5
   gridPosition: {x: 0, y: 0, z: 0}
   equippedWeapon: {fileID: 1722637576}
   weapons:
   - {fileID: 1722637576}
   - {fileID: 1816398976}
   weaponHolder: {fileID: 1237459147}
-  swordSounds: []
+  swordSounds:
+  - {fileID: 8300000, guid: 7ef3affd9f04445d89858fd0da69b836, type: 3}
   hitSounds:
   - {fileID: 8300000, guid: d6ac96bdbcb0147edaa2800e78e0f22e, type: 3}
   walkSounds:
   - {fileID: 8300000, guid: 66d9333a41ab9417899e9208a82a4651, type: 3}
   - {fileID: 8300000, guid: 47beb8009b9f047b6ab742bff332c156, type: 3}
-  boxSize: {x: 0.5, y: 0.5}
   health: 4
-  blockInput: 0
   gameOverScreen: {fileID: 2025890200}
+  blockInput: 0
 --- !u!212 &104545147
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -428,6 +427,68 @@ MonoBehaviour:
   - {fileID: 621002936}
   - {fileID: 2086015789}
   - {fileID: 373784377}
+--- !u!1 &174353100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 174353101}
+  m_Layer: 0
+  m_Name: --------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &174353101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174353100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0835685, y: 2.4000626, z: -10.0879755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &185887273
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185887274}
+  m_Layer: 0
+  m_Name: --------
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &185887274
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185887273}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0835685, y: 2.4000626, z: -10.0879755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &247515723
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1729,6 +1790,53 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28a0f9818acf648bb84e5ae2e10e2de8, type: 3}
+--- !u!1 &879213081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879213083}
+  - component: {fileID: 879213082}
+  m_Layer: 0
+  m_Name: Stinger Mapping
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &879213082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879213081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe688ee5c82c3412bb2274e8779a5587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveStinger: small
+  attackStinger: medium
+  damageStinger: big
+--- !u!4 &879213083
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879213081}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.0835685, y: 2.4000626, z: -10.0879755}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &892067549
 GameObject:
   m_ObjectHideFlags: 0
@@ -6848,12 +6956,12 @@ SpriteRenderer:
   m_SortingLayerID: 787653305
   m_SortingLayer: 1
   m_SortingOrder: 90
-  m_Sprite: {fileID: -8405681364781151922, guid: 2aee39ffc0f7842a2a834f2536ec7ff1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2aee39ffc0f7842a2a834f2536ec7ff1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 16, y: 12}
+  m_Size: {x: 14.4, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -23862,9 +23970,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSection: 
   bundles:
-  - name: Trailer collage_1729718633794
-    path: /Users/miniwrench/reactional/unity/MusicCrypt/Assets/StreamingAssets/Reactional/Trailer
-      collage_1729718633794
+  - name: UnityTest_1730748704758
+    path: /Users/miniwrench/reactional/unity/MusicCrypt/Assets/StreamingAssets/Reactional/UnityTest_1730748704758
     sections:
     - name: Section #1
       themes:
@@ -23877,50 +23984,20 @@ MonoBehaviour:
         trackGenre: 
         trackCover: 
         trackBPM: 
-        bundleID: Trailer collage_1729718633794
+        bundleID: UnityTest_1730748704758
       playlists:
       - name: Default
         tracks:
-        - name: shorttrailer6
+        - name: ALIBI-Skeletal Dance_Full w Theremin
           trackID: -1
-          trackHash: 81bb2b7c7cc0765b0c7265fbc2dca01d7709fc4d9ac8dd8ead6d07190317c923
-          trackName: shorttrailer6
+          trackHash: 09b289f57eac4706be4e09ba3bf0e0731946c9dfbb4ae9eb635e05b47729d178
+          trackName: ALIBI-Skeletal Dance_Full w Theremin
           trackArtist: ' '
           trackAlbum: ' '
           trackGenre: ' '
           trackCover: 
-          trackBPM: 123.589769220779
-          bundleID: Trailer collage_1729718633794
-        - name: Johan Vilborg - It Feels Like It's Meant To (Original Mix)
-          trackID: -1
-          trackHash: 094992e558285d52a166b84db4e4195baca5e7af9ba95e99d391c80ead2d7ba3
-          trackName: Johan Vilborg - It Feels Like It's Meant To (Original Mix)
-          trackArtist: ' '
-          trackAlbum: ' '
-          trackGenre: ' '
-          trackCover: 
-          trackBPM: 125.010795420561
-          bundleID: Trailer collage_1729718633794
-        - name: Neurotic
-          trackID: -1
-          trackHash: a95e90d9a8852d1e55e4aab54afac30a33e99ca3321afbe72f1cde6ee84733d0
-          trackName: Neurotic
-          trackArtist: ' '
-          trackAlbum: ' '
-          trackGenre: ' '
-          trackCover: 
-          trackBPM: 81.4059302142859
-          bundleID: Trailer collage_1729718633794
-        - name: armomacut
-          trackID: -1
-          trackHash: 82cedcaf780d366357928ae3032075253f14c45963f7fedc47ee75838939d90e
-          trackName: armomacut
-          trackArtist: ' '
-          trackAlbum: ' '
-          trackGenre: ' '
-          trackCover: 
-          trackBPM: 126.0417309
-          bundleID: Trailer collage_1729718633794
+          trackBPM: 110.574227630769
+          bundleID: UnityTest_1730748704758
   _loadedThemes: []
   _loadedTracks: []
   lookahead: 0
@@ -24981,9 +25058,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 174353101}
   - {fileID: 1119638188}
-  - {fileID: 1922134996}
-  - {fileID: 1071947912}
   - {fileID: 1083473309}
-  - {fileID: 1715180202}
   - {fileID: 104545145}
+  - {fileID: 1071947912}
+  - {fileID: 1715180202}
+  - {fileID: 185887274}
+  - {fileID: 1922134996}
+  - {fileID: 879213083}

@@ -53,7 +53,7 @@ public class BasicEnemy : MonoBehaviour
         // Get player and enemy grid positions
         playerPosition = Vector3Int.RoundToInt(player.position);
 
-        // Calculate the Manhattan distance to the player
+        // Calculate the distance to the player
         int distanceToPlayer = Mathf.Abs(playerPosition.x - enemyPosition.x) + Mathf.Abs(playerPosition.y - enemyPosition.y);
 
         // Check if the player is within the detection range
@@ -151,7 +151,7 @@ public class BasicEnemy : MonoBehaviour
 
     IEnumerator Knockback(Vector3Int direction)
     {
-        Reactional.Playback.Theme.TriggerStinger("medium", 0.125f);
+        Reactional.Playback.Theme.TriggerStinger(StingerMapping.AttackStinger, 0.125f);
         if (!hasKnockBack)
             yield break;
         float duration = 0.1f;

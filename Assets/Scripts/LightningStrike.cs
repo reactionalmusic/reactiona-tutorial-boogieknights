@@ -8,18 +8,6 @@ public class LightningStrike : MonoBehaviour
 {
     int barCount = 0;
     public Light2D light2D;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        ReactionalEngine.Instance.onBarBeat += BarBeat;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void BarBeat(double offset, int bar, int beat)
     {
         barCount = bar % 4;
